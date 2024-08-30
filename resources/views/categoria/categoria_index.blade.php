@@ -9,6 +9,14 @@
 
                 <a href="{{ url('/categoria/create') }}" class="btn btn-success btn-lg active" role="button" aria-presse="true">CRIAR</a>
 
+                @if(session('mensagem'))
+                <br>
+                    <div class="alert alert-success">
+                        {{ session('mensagem') }}
+                </div>
+                @endif
+
+
                 <table>
                     <tr>
                       <th>ID</th>

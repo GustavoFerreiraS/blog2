@@ -7,12 +7,30 @@
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
-                    <form action="{{ url('/categoria') }}">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                        <label for="fname">Nome: </label><br>
-                        <input type="text" id="fname" nome="nome" value="Gustavo"><br>
+                    <form method="POST" action="{{ url('/categoria') }}">
 
-                        <input type="submit" value="submit">
+                        @csrf
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nome</label>
+                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da categoria">
+                          </div>
+
+
+
+
+
+                        <input type="submit" value="Enviar">
                     </form>
 
                 </div>
