@@ -330,7 +330,7 @@ return [
         ],
         [
             'text' => 'Postagem',
-            'url' => 'Postagem',
+            'url' => 'postagem',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
