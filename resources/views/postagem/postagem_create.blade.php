@@ -22,8 +22,25 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nome</label>
-                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
+
+                            <label for="cars">Escolha uma categoria:</label>
+
+                            <select name="categoria_id" class="form-control" id="cars">
+                                @foreach ( $categorias as $value)
+                                <option value="{{ $value->id }}">{{ $value->nome }}</option>
+
+                                @endforeach
+
+                            </select>
+
+                            <label for="exampleInputEmail1">Título</label>
+
+                            <input type="text" name="titulo" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
+
+                            <label for="exampleInputEmail1">Comteúdo</label>
+
+                            <textarea id="conteudo" name="conteudo" class="form-control" rows="4" cols="50"></textarea>
+
                           </div>
 
 

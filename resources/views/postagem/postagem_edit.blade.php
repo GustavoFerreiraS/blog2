@@ -23,9 +23,17 @@
 
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nome</label>
-                            <input type="text" name="nome" value="{{ $postagem->nome }}" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
-                          </div>
+
+
+                            <label for="exampleInputEmail1">Título</label>
+                            <input type="text" name="titulo" value="{{ $postagem->titulo }}" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
+
+                            <label for="exampleInputEmail1">Comteúdo</label>
+                            <input type="text" name="conteudo" value="{{ $postagem->conteudo }}"class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
+
+
+
+                         </div>
 
 
 

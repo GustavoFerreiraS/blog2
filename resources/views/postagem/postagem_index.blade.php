@@ -27,14 +27,14 @@
                 <table>
                     <tr>
                       <th>ID</th>
-                      <th>Nome</th>
+                      <th>titulo</th>
                       <th>Ações</th>
                     </tr>
 
                 @foreach($postagens as $value)
                     <tr>
                       <td>{{$value->id}}</td>
-                      <td>{{$value->nome}}</td>
+                      <td>{{$value->titulo}}</td>
                       <td>
                         <a href="{{ url('/postagem/' . $value->id) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Visualizar</a>
 

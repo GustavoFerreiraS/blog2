@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Postagem;
+use App\Models\Categoria;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostagemController extends Controller
 {
@@ -12,7 +15,7 @@ class PostagemController extends Controller
      */
     public function index()
     {
-        $postagens = Postagem::orderBy('nome', 'ASC')->get();
+        $postagens = Postagem::orderBy('titulo', 'ASC')->get();
         //dd($postagens);
         //dd('Postagem - index');
         return view('postagem.postagem_index', compact ('postagens'));
@@ -23,7 +26,8 @@ class PostagemController extends Controller
      */
     public function create()
     {
-      return view('postagem.postagem_create');
+        $categorias = Categoria::orderBy('nome', 'ASC')->get();
+        return view('postagem.postagem_create', compact('categorias'));
 
     }
 
@@ -33,11 +37,15 @@ class PostagemController extends Controller
     public function store(Request $request)
     {
          $validated = $request->validate([
-            'nome' => 'required|min:5',
+            'categoria_id' => 'required',
+            'titulo' => 'required|min:5',
          ]);
 
          $postagem = new Postagem();
-         $postagem->nome = $request->nome;
+         $postagem->categoria_id = $request->categoria_id;
+         $postagem->user_id = Auth::id();
+         $postagem->titulo = $request->titulo;
+         $postagem->conteudo = $request->conteudo;
          $postagem->save();
 
         //dd($request->all());
@@ -51,7 +59,7 @@ class PostagemController extends Controller
      */
     public function show(string $id)
     {
-        //dd('show: ' . $id);
+        //dd ('show: ' . $id);
         $postagem = Postagem::find($id);
         return view('postagem.postagem_show', compact('postagem'));
     }
@@ -74,11 +82,11 @@ class PostagemController extends Controller
     {
         //dd($id);
         $validated = $request->validate([
-            'nome' => 'required|min:5',
+            'titulo' => 'required|min:5',
          ]);
 
          $postagem = Postagem::find($id);
-         $postagem->nome = $request->nome;
+         $postagem->titulo = $request->titulo;
          $postagem->save();
 
          return redirect()->route('postagem.index')->with('mensagem', 'Postagem criada com sucesso');
