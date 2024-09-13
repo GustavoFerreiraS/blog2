@@ -27,6 +27,9 @@ class PostagemController extends Controller
     public function create()
     {
         $categorias = Categoria::orderBy('nome', 'ASC')->get();
+
+        //dd($categorias);
+
         return view('postagem.postagem_create', compact('categorias'));
 
     }
@@ -36,10 +39,14 @@ class PostagemController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request->all());
+
          $validated = $request->validate([
             'categoria_id' => 'required',
             'titulo' => 'required|min:5',
-         ]);
+            'conteudo' => 'required|min:5',
+        ]);
 
          $postagem = new Postagem();
          $postagem->categoria_id = $request->categoria_id;
@@ -61,6 +68,7 @@ class PostagemController extends Controller
     {
         //dd ('show: ' . $id);
         $postagem = Postagem::find($id);
+        //dd($postagem);
         return view('postagem.postagem_show', compact('postagem'));
     }
 
