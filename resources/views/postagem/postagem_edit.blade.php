@@ -21,6 +21,21 @@
                         @method('PUT')
                         @csrf
 
+                        <label for="cars">Escolha uma categoria:</label>
+
+                        <select name="categoria_id"  class="form-control" id="cars">
+                            @foreach ($categorias as $value)
+
+                            @if($value->id == $postagem->categoria_id)
+                                    <option selected="selected" value="{{ $value->id  }}">{{ $value->nome }}</option>
+                                @else
+                                    <option value="{{ $value->id }}">{{ $value->nome }}</option>
+                                @endif
+
+
+                            @endforeach
+                        </select>
+
 
                         <div class="form-group">
 
@@ -28,8 +43,8 @@
                             <label for="exampleInputEmail1">Título</label>
                             <input type="text" name="titulo" value="{{ $postagem->titulo }}" class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
 
-                            <label for="exampleInputEmail1">Comteúdo</label>
-                            <input type="text" name="conteudo" value="{{ $postagem->conteudo }}"class="form-control" id="exampleInputEmail1" placeholder="Digite o nome da postagem">
+                            <label for="exampleInputEmail1">Conteúdo</label>
+                            <textarea id="conteudo" name="conteudo" class="form-control" rows="4" cols="50">{{ $postagem->conteudo }}</textarea>
 
 
 

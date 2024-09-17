@@ -78,9 +78,9 @@ class PostagemController extends Controller
     public function edit(string $id)
     {
         //dd('Edit:' . $id);
-
+        $categorias = Categoria::orderBy('nome', 'ASC')->get();
         $postagem = Postagem::find($id);
-        return view('postagem.postagem_edit', compact('postagem'));
+        return view('postagem.postagem_edit', compact('postagem', 'categorias'));
     }
 
     /**
@@ -90,11 +90,16 @@ class PostagemController extends Controller
     {
         //dd($id);
         $validated = $request->validate([
+            'categoria_id' => 'required',
             'titulo' => 'required|min:5',
+            'conteudo' => 'required|min:5',
          ]);
 
          $postagem = Postagem::find($id);
+         $postagem->categoria_id = $request->categoria_id;
+         $postagem->user_id = Auth::id();
          $postagem->titulo = $request->titulo;
+         $postagem->conteudo = $request->conteudo;
          $postagem->save();
 
          return redirect()->route('postagem.index')->with('mensagem', 'Postagem criada com sucesso');
