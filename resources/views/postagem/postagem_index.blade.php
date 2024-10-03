@@ -26,18 +26,21 @@
 
                 <table>
                     <tr>
-                      <th>ID</th>
-                      <th>Título</th>
-                      <th>Categoria</th>
-                      <th>Ações</th>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Categoria</th>
+                        <th class="text-center">Título</th>
+                        <th class="text-center">Conteúdo</th>
                     </tr>
+
 
                 @foreach($postagens as $value)
                     <tr>
-                      <td>{{ $value->id }}</td>
-                      <td>{{ $value->titulo }}</td>
-                      <td>{{ $value->categoria->nome }}</td>
-                      <td>
+                        <td>{{ $value->id }}</td>
+                        <td>{{ $value->titulo }}</td>
+                        <td>{{ $value->categoria->nome }}</td>
+
+                        <td class='d-flex justify-content-around'>
+
                         <a href="{{ url('/postagem/' . $value->id) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Visualizar</a>
 
                         <a href="{{ url('/postagem/' . $value->id) . '/edit' }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Editar</a>
@@ -48,13 +51,13 @@
                                 <input type="submit" class="btn btn-danger btn-lg active"  value="Excluir">
                             </form>
 
-                      </td>
+                    </td>
                     </tr>
                 @endforeach
 
 
 
-                  </table>
+                </table>
 
 
                 </div>

@@ -24,18 +24,20 @@
                 </script>
 
 
-                <table>
+            <table>
                     <tr>
-                      <th>ID</th>
-                      <th>Nome</th>
-                      <th>Ações</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th class='text-center'>Ações</th>
                     </tr>
+
 
                 @foreach($categorias as $value)
                     <tr>
-                      <td>{{$value->id}}</td>
-                      <td>{{$value->nome}}</td>
-                      <td>
+                        <td>{{$value->id}}</td>
+                        <td>{{$value->nome}}</td>
+                        <td class='d-flex justify-content-around'>
+
                         <a href="{{ url('/categoria/' . $value->id) }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Visualizar</a>
 
                         <a href="{{ url('/categoria/' . $value->id) . '/edit' }}" class="btn btn-warning btn-lg active" role="button" aria-pressed="true">Editar</a>
@@ -46,13 +48,13 @@
                                 <input type="submit" class="btn btn-danger btn-lg active"  value="Excluir">
                             </form>
 
-                      </td>
+                        </td>
                     </tr>
                 @endforeach
 
 
 
-                  </table>
+            </table>
 
 
                 </div>
