@@ -5,5 +5,7 @@
             "User\\Blog2\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "owen-it/laravel-auditing": "^13.6"
+    }
 }
